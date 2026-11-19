@@ -19,7 +19,10 @@ async function tabObj() {
   console.log(tab);
 
   if (tab?.id) {
-    await chrome.tabs.sendMessage(tab.id, { action: "toggle" });
+    await chrome.tabs.sendMessage(tab.id, {
+      action: "toggle",
+      url: tab.url
+    });
   }
 }
 // tabObj();
