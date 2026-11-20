@@ -7,7 +7,7 @@
 
   "permissions": [
     "storage",
-    // "activeTab",
+    "activeTab",
     "tabs"
   ],
 

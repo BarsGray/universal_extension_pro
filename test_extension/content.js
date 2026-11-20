@@ -4,7 +4,7 @@ async function updateBorder() {
   // const enabled = !(data.enabled ?? false);
   // await chrome.storage.local.set({ enabled });
   enabled = !enabled;
-  
+
   if (enabled) {
     document.body.style.border = "5px solid #6366f1";
   } else {
@@ -13,7 +13,7 @@ async function updateBorder() {
 }
 
 // Получаем команды от popup
-chrome.runtime.onMessage.addListener( async (message) => {
+chrome.runtime.onMessage.addListener(async (message) => {
   if (message.action === "toggle") {
     await updateBorder();
 
@@ -36,21 +36,21 @@ chrome.runtime.onMessage.addListener( async (message) => {
 // }
 
 function getLinks() {
-    const servicesLinks = document.querySelectorAll('.services_item');
-    const links = [];
+  const servicesLinks = document.querySelectorAll('.services_item');
+  const links = [];
 
-    servicesLinks.forEach(e => {
-        const link = e;
+  servicesLinks.forEach(e => {
+    const link = e;
 
-        if (link) {
-            links.push(link.href);
-        }
-    });
+    if (link) {
+      links.push(link.href);
+    }
+  });
 
-    chrome.runtime.sendMessage({
-        action: 'visitLinks',
-        links: links
-    });
+  chrome.runtime.sendMessage({
+    action: 'visitLinks',
+    links: links
+  });
 }
 
 console.log('Тест');
